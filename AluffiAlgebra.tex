@@ -3,8 +3,8 @@
 \usepackage{amsthm}
 \usepackage{mathrsfs}
 \usepackage[margin=1in]{geometry}
-
-
+\usepackage{amssymb}
+\usepackage{amsmath}
 \title{Algebra: Chapter 0 Solutions}
 \author{Dylan Huis in't Veld}
 \begin{document}
@@ -62,6 +62,47 @@ Totalling the results thus far, we see that all elements of $S$ are in a equival
 
 \medskip
 
-\textbf{Solution} Let $P_i$ denote the disjoint non empty subsets in $\mathscr{P}$. We define an equivalence relation on elements of $S$ by the following: $a \sim b$ if and only if $a$ and $b$ are contained within the same subset $P_i$. We need only show this defines a valid equivalance relation
+\textbf{Solution} Let $P_i$ denote the disjoint non empty subsets in $\mathscr{P}$. We define an equivalence relation on elements of $S$ by the following: $a \sim b$ if and only if $a$ and $b$ are contained within the same subset $P_i$. We need only show this defines a valid equivalance relation.
+
+We clearly have that $a \sim a$ vacuously by the definition of the equivalence relation, so the reflexitivity requirement is satisfied. Supposing that $a \sim b$, this means that $a,b \in P_i$ and so equivalently we have that $b \sim a$, satisfying symmetry. Suppose on top of this we have that $b \sim c$. Then this must mean that $c$ is also the in same subset $P_i$, thereby meaning that $a \sim c$, satisfying transitivity, making this a well defined equivalence relation. By construction this relation generates the exact same partition of $S$ that $\mathscr{P}$ does.
+
+\qed 
+
+\bigskip
+
+\textbf{Exercise 1.4.} How many different equivalence relations may be defined on the set $\{1,2,3\}$.
+
+\medskip
+
+\textbf{Solution} Combining the results of the two previous exercises we know that an equivalence relation defines a partition, $\mathscr{P}_{\sim}$ of a set $S$ by equivalence classes, and that given any partition $\mathscr{P}$ of $S$, we can define a correspondoning equivalence relation that defines this partition. What this means is that this question is as simple as counting all partitions of the set. We have the followings partitions of $\{1,2,3\}$:
+
+\[ \{ \{1,2,3\} \}, \{ \{1,2 \}, \{3 \} \}, \{ \{1 \}, \{2,3 \} \}, \{ \{1,3 \}, \{2 \} \}, \{ \{1 \}, \{2 \}, \{3 \} \} \]
+
+Giving a total of 5 equivalence relations.
+
+\qed
+
+\bigskip
+
+\textbf{Exercise 1.5.} Give an example of a relation that is reflexive and symmetric but not transitive. What happens if you attempt to use this relation to define a partition on the set?(Hint: Thinking about the second question will help you answer the first one.)
+
+\medskip
+
+\textbf{Solution} Rather than coming up with a strict rule for the relation, we will simply construct a family of subsets that is not a partition and show how this defines the desired relation. Take $\{1,2,3 \}$ and consider the following family of subsets:
+
+\[ \{ \{1 \}, \{2 \}, \{3 \}, \{1,2 \}, \{2,3 \} \} \]
+
+If we define this as equivalence classes, we get that the relation is reflexive due to the first 3 subset in the family. We also have that $1 \sim 2 \implies 2 \sim 1$ since there is a subset containing both elements, and the same is true for $2 \sim 3$ satisfying the symmetry requirement. However we do not have $1 \sim 3$ despite having $1 \sim 2$ and $2 \sim 3$, and so transitivity is not fulfilled. The main observation to take away here is that if whatever relation we are working with fails to satisfy all 3 requirements, it will result in a family of subsets that are not a partition of the original set, and vice versa.
+
+\qed
+
+\bigskip
+
+\textbf{Exercise 1.6.} Define a relation $\sim$ on the set $\mathbb{R}$ of real numbers by setting $a \sim b \iff b - a \in \mathbb{Z}$. Prove that this is an equivalence relation, and find a 'compelling' description for $\mathbb{R} / \sim$. Do the same for the relation $\approx$ on the plane $\mathbb{R} \times \mathbb{R}$ defined by declaring $(a_1,a_2) \approx (b_1,b_2) \iff b_1 - a_1 \in Z$ and $b_2 - a_2 \in Z$.
+
+\textbf{Solution} For any $a \in \mathbb{R}$ we have that $a-a=0 \in \mathbb{Z}$ so $a \sim a$, satisfying reflexivity. If $a \sim b$ then $a-b \in \mathbb{Z}$ which implies that $-(a-b) = b-a \in Z$ and so $b \sim a$, satisfying symmetry. If $a \sim b$ and $b \sim c$ then we have that $a-b$ and $b-c$ are both integers. We must then have that $(a-b) + (b-c)$ is also an integer, and this is exactly equal to $a-c$, and so we then have that $a \sim c$, satisfying transitivity and thereby proving this is a valid equivalence relation. The second equivalence relation given in the exercise is exactly the same, just working element wise on each ordered pair, with the workings being analagous to those done already.
+\smallskip
+
+In terms of a description, we can think of the first equivalance relation as the real number line being quotiented down to just the interval $[0,1]$. Similarly, for the second relation this is a quotient of the cartesian plane where it is quotiented down to the unit square $[0,1]^2$. If one is familiar with topology, they may know that this set endowed with the quotient topology coming from the standard topology on $\mathbb{R}^2$ gives the 2-torus $\mathbb{T}^2$.
 
 \end{document}
