@@ -21,7 +21,7 @@ This document does not seek to represent the perfect solutions manual to the tex
 
 \section{Chapter 1: Preliminaries: Set Theory and Categories}
 \subsection{Naive Set Theory}
-\subsubsection{Sets}
+
 \textbf{Exercise 1.1.} Locate a discusiion of Russell's paradox, and understand it.
 
 \medskip
@@ -100,9 +100,32 @@ If we define this as equivalence classes, we get that the relation is reflexive 
 
 \textbf{Exercise 1.6.} Define a relation $\sim$ on the set $\mathbb{R}$ of real numbers by setting $a \sim b \iff b - a \in \mathbb{Z}$. Prove that this is an equivalence relation, and find a 'compelling' description for $\mathbb{R} / \sim$. Do the same for the relation $\approx$ on the plane $\mathbb{R} \times \mathbb{R}$ defined by declaring $(a_1,a_2) \approx (b_1,b_2) \iff b_1 - a_1 \in Z$ and $b_2 - a_2 \in Z$.
 
+\medskip
+
 \textbf{Solution} For any $a \in \mathbb{R}$ we have that $a-a=0 \in \mathbb{Z}$ so $a \sim a$, satisfying reflexivity. If $a \sim b$ then $a-b \in \mathbb{Z}$ which implies that $-(a-b) = b-a \in Z$ and so $b \sim a$, satisfying symmetry. If $a \sim b$ and $b \sim c$ then we have that $a-b$ and $b-c$ are both integers. We must then have that $(a-b) + (b-c)$ is also an integer, and this is exactly equal to $a-c$, and so we then have that $a \sim c$, satisfying transitivity and thereby proving this is a valid equivalence relation. The second equivalence relation given in the exercise is exactly the same, just working element wise on each ordered pair, with the workings being analagous to those done already.
 \smallskip
 
 In terms of a description, we can think of the first equivalance relation as the real number line being quotiented down to just the interval $[0,1]$. Similarly, for the second relation this is a quotient of the cartesian plane where it is quotiented down to the unit square $[0,1]^2$. If one is familiar with topology, they may know that this set endowed with the quotient topology coming from the standard topology on $\mathbb{R}^2$ gives the 2-torus $\mathbb{T}^2$.
+
+\bigskip
+
+\subsection{Functions Between Sets}
+
+\textbf{Exercise 2.1.} How many different bijections are there between a set $S$ with $n$ elements and itself?
+
+\medskip
+
+\textbf{Solution} This can be solved by thinking about the different bijections element-wise in the set. We have $n$ choices for where to send the first element in the set, and once this is chosen we will then have $(n-1)$ choices of where to send our second element. We can continue this process to find the the total number of bijections is equal to 
+
+\[ n \times (n-1) \times (n-2) \times \dots 2 \times 1 = n! \]
+
+We know by construction these are indeed injective and surjective, and we will cover every single possible combination of pairs this way, confirming this is indeed the total number of bijections.
+
+\qed
+
+\bigskip
+
+
+
 
 \end{document}
