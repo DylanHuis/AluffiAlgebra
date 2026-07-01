@@ -1,12 +1,67 @@
 \documentclass[titlepage]{article}
 \usepackage{hyperref}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage[margin=1in]{geometry}
+
+
 \title{Algebra: Chapter 0 Solutions}
 \author{Dylan Huis in't Veld}
 \begin{document}
 \maketitle
 \tableofcontents
 
-\section{Preface}
+\newpage
+
+\section*{Preface}
 
 This document does not seek to represent the perfect solutions manual to the text at hand, and is more of a way of recording my progress through the text. Should you happen to find this, and wish to contribute or point out any logical flaws in the arguments presented, I would be more than happy to adjust my solutions to perhaps work towards establishing this as a suggested solutions. Should this end up being the case, I will update this section accordingly
+
+\newpage
+
+\section{Chapter 1: Preliminaries: Set Theory and Categories}
+\subsection{Naive Set Theory}
+\subsubsection{Sets}
+\textbf{Exercise 1.1.} Locate a discusiion of Russell's paradox, and understand it.
+
+\medskip
+
+\textbf{Solution} There are many discussions of the paradox. The one I found most intuitive or easy to understand was the labelling of sets as such: We say a set is 'abnormal' if the set contains itself ($S \in S$), or we say that a set is 'normal' if it does not contain itself ($S \notin S$). We now define the set $X$ as the set of all normal sets. We ask the question 'is $X$ a normal or abnormal set?'
+
+\medskip
+
+ Suppose it is normal, then it would be contained within $X$ by definition, making $X$ abnormal. If we instead suppose $X$ is abnormal, then $X$ would not be contained in itself, making $X$ normal.
+
+
+\medskip
+ We arrive at a paradox; that is, $X$ is neither normal or abnormal.
+
+ \qed
+
+\bigskip
+
+\textbf{Exercise 1.2.} Prove that if $\sim$ is an  equivalence relation on a set $S$, then the corresponding family $\mathscr{P}_{\sim}$ defined in \S 1.5 in indeed a partition of $S$: that is, its elements are nonempty, disjoint and their union is $S$. 
+
+\medskip
+
+\textbf{Solution} We show the desired result by considering the definition of the equivalence class of $a$ given in the text
+
+\[ [a]_{\sim} := \{b \in S | b \sim a\} \]
+
+Firstly, its clear that every element $s \in S$ is contained in its own equivalence class. This is due to the reflexitivity requirement of the relation ($s \sim s$). This also shows that every equivalence class is non-empty. We now show that for any two equivalence classes $[a]_{\sim}$ and $[b]_{\sim}$ are either disjoint or equal.
+
+Suppose the two sets are not disjoint. Then there exists an element $z \in [a]_{\sim} \cap [b]_{\sim}$. Let $n \in [a]_{\sim}$ be arbitary. Since we have $n \sim z$ and $z \sim b$, we must have that $n \in [b]_{\sim}$ by transitivity and so $[a]_{\sim} \subseteq [b]_{\sim}$. Similarly, for an arbitrary element $m \in [b]_{\sim}$ we have $m \sim z$ and $z \sim a$ and so $m \in [a]_{\sim}$ implying that $[b]_{\sim} \subseteq [a]_{\sim}$. Combining these two results means that $[a]_{\sim} = [b]_{\sim}$ and the two equivalence classses are equal.
+
+Totalling the results thus far, we see that all elements of $S$ are in a equivalence class, and that these equivalence classes are either disjoint or equal, and so $\mathscr{P}_{\sim}$ indeed forms a partition of $S$.
+
+\qed
+
+\bigskip
+
+\textbf{Exercise 1.3.} Given a partition $\mathscr{P}$ on a set $S$, show how to define a relation $\sim$ on $S$ such that $\mathscr{P}$ is the corresponding partition.
+
+\medskip
+
+\textbf{Solution} Let $P_i$ denote the disjoint non empty subsets in $\mathscr{P}$. We define an equivalence relation on elements of $S$ by the following: $a \sim b$ if and only if $a$ and $b$ are contained within the same subset $P_i$. We need only show this defines a valid equivalance relation
+
 \end{document}
