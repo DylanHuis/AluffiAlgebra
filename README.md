@@ -1,0 +1,1 @@
+This project is a measure of my progress through Paulo Aluffi's Algebra: Chapter 0 book. I would not read these intending to find a suggested solution, as it is entirely possible that a mistake is present within my workings. With this being said, if you do find an error, I am more than happy to edit the document as needed.
