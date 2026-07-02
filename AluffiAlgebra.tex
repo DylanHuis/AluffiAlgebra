@@ -280,14 +280,60 @@ And the decomposition can be realised in the following diagram:
 
 \[
 \begin{tikzcd}
-    \mathbb{R} \arrow[r,"s"] & (\mathbb{R} / \sim)
+\mathbb{R} \arrow[r,twoheadrightarrow, "s" below,] \arrow[rrr,"f",bend left=30] & \mathbb{R} /\sim \arrow[r,"\sim" above,"\tilde{g}" below] &  \text{im} f \arrow[r,hook,"i" below] & \mathbb{C}
 \end{tikzcd}
 \]
 
+\qed
 
-\begin{tikzpicture}
-\draw (0,0) -- (2,0);
-\end{tikzpicture}
+\bigskip
 
+\textbf{Exercise 2.9} Show that if $A' \cong A''$ and $B' \cong B''$, and further $A' \cap B' = \emptyset$ and $A'' \cap B'' = \emptyset$, then $A' \cup B' \cong A'' \cup B''$. Conclude that the operation $A \amalg B$ (as described in \S 1.4) is well-defined up to \textit{isomorphism} (cf. \S 2.9).
+
+\medskip
+
+\textbf{Solution} We show that this is true by constructing the explicit bijection between the two sets. Since $A' \cong A''$, there exists a bijection $\alpha: A' \to A''$. Similarly, since $B' \cong B''$ there exists a bijection $\beta: B' \to B''$. We construct a new function, $\gamma:A' \cup B' \to A'' \cup B''$ as follows:
+
+
+\[ \gamma(x) = \begin{cases}
+\alpha(x) & x \in A' \\ \beta(x) & x \in B'
+\end{cases} \]
+
+Since $A'$ and $B'$ are disjoint, this function is well defined, and its also clear that if we consider $\gamma\vert_{A'}$ and $\gamma\vert_{B'}$, that gamma inherits the bijective nature from each set, and since the sets are disjoint we can be sure that $\gamma$ is bijective across its entire domain. This thereby means that $A' \cup B' \cong A'' \cup B''$.
+
+
+When we constructed $A \amalg B$, we found two sets $A'$ and $B'$ which were isomorphic to $A$ and $B$ respectively and took the normal union of these two sets. The above computation verifies that no matter which isomorphic sets we choose, the union will be the same up to isomorphism. This is exactly what it means for this operation to be well defined up to isomorphism.
+
+\qed
+
+\bigskip
+
+\textbf{Exercise 2.10.} Show that if $A$ and $B$ are finite sets, then $|B^A|=|B|^{|A|}$
+
+\medskip
+
+\textbf{Solution} This exercise is very similar to (2.1) and we proceed with the same counting argument. Recall that $B^A$ is the set of all functions from a set $A$ to a set $B$. Since we are not concerned about injectivity, there is no restriction on where we map each element of $A$. Therefore, we have $|B|$ options of where to map each individual element of $A$, and since we have $|A|$ elements we need to map, there are exactly $|B|^{|A|}$ unique functions from $A$ to $B$.
+
+\qed
+
+\bigskip
+
+\textbf{Exercise 2.11.} In view of Exercise 2.10, it is not unreasonable to use $2^A$ to denote th set of functions from an arbitrary set $A$ to a set with 2 elements (say {0,1}). Prove that there is a bijection between $2^A$ and the \textit{power set} of A.
+
+
+\textbf{Solution} Encountering your first question of this nature can be somewhat daunting. I think it helps to take a step back and simplify what we are wanting to show. We want to match any subset of $A$ to a function $f:A \to \{0,1\}$ such that we guarantee there is no overlap, and every function is covered. Since we only have two choices of where to send elements of $A$, I think its intuitive that for a given subset of $A$ we will send all elements of that subset to 1, and every other element of $A$ to 0. Writing this out mathematically we define a function $\phi: \mathscr{P}(A) \to 2^A$ by the following. Let $N \in \mathscr{P}(A)$ be arbitrary. We then have that $\phi(N) = f_N$ where
+
+\[ f_N(a) = \begin{cases}
+    1 & a \in N \\ 0 & a \in A / N
+\end{cases}
+\]
+
+We now show that $\phi$ is a bijection
+
+\textit{Injective}: Suppose that $\phi(M)=\phi(N)$. We must then have that $f_N$ and $f_M$ are equal as functions. This is only possible if they send the exact same elements to 1 and the same elements to 0, but by construction this is only possible if $M=N$, proving injectivity.
+
+\textit{Surjective}: Let $f:A \to \{0,1\}$ be any function. We have that $f^{-1}(1) \subseteq A$ and so $f^{-1}(1) \in \mathscr{P}(A)$. We then immediately get that $\phi(f^{-1}(1)) = f$, proving surjectivity.
+
+\qed
 
 \end{document}
