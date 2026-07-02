@@ -5,6 +5,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{amssymb}
 \usepackage{amsmath}
+\usepackage{tikz-cd}
 \title{Algebra: Chapter 0 Solutions}
 \author{Dylan Huis in't Veld}
 \begin{document}
@@ -259,5 +260,34 @@ We show that this is a bijection.
 We have constructed a bijection between the two sets, and so we have $A \cong \Gamma_f$.
 
 \qed
+
+\bigskip
+
+\textbf{Exercise 2.8.} Describe as explicitly as you can all terms in the canonical decomposition (cf. \S 2.8)
+ of the function $\mathbb{R} \to \mathbb{C}$ defined by $r \mapsto e^{2 \pi i r}$. (This exercise matches one assigned previously. Which one?)
+
+\medskip
+
+\textbf{Solution} The exercise this matches is Exercise (1.6). The reason this is the case is that the equivalence relation formed from this mapping creates equivalence classes such that the distance between each element is an integer value. In other words, we we define this map as $g$, then $a' \sim a'' \iff g(a')=g(a'') \iff a'-a'' \in \mathbb{Z}$ Which is exactly the recurrence relation we had in the mentioned exercise. Letting $\sim$ represent the relation mentioned, we can now list every element of our canonical decomposition
+
+\[ s:\mathbb{R} \to \mathbb{R} / \sim, a \mapsto [a]_{\sim} \]
+
+\[ \tilde{g}: \mathbb{R} / \sim \to \text{im} f, [a]_{\sim} \mapsto e^{2 \pi i a} \] 
+
+\[ i: \text{im} f \to \mathbb{C}, c \mapsto c \]
+
+And the decomposition can be realised in the following diagram:
+
+\[
+\begin{tikzcd}
+    \mathbb{R} \arrow[r,"s"] & (\mathbb{R} / \sim)
+\end{tikzcd}
+\]
+
+
+\begin{tikzpicture}
+\draw (0,0) -- (2,0);
+\end{tikzpicture}
+
 
 \end{document}
