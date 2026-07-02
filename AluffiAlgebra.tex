@@ -22,7 +22,7 @@ This document does not seek to represent the perfect solutions manual to the tex
 \section{Chapter 1: Preliminaries: Set Theory and Categories}
 \subsection{Naive Set Theory}
 
-\textbf{Exercise 1.1.} Locate a discusiion of Russell's paradox, and understand it.
+\textbf{Exercise 1.1.} Locate a discussion of Russell's paradox, and understand it.
 
 \medskip
 
@@ -48,9 +48,9 @@ This document does not seek to represent the perfect solutions manual to the tex
 
 \[ [a]_{\sim} := \{b \in S | b \sim a\} \]
 
-Firstly, its clear that every element $s \in S$ is contained in its own equivalence class. This is due to the reflexitivity requirement of the relation ($s \sim s$). This also shows that every equivalence class is non-empty. We now show that for any two equivalence classes $[a]_{\sim}$ and $[b]_{\sim}$ are either disjoint or equal.
+Firstly, its clear that every element $s \in S$ is contained in its own equivalence class. This is due to the reflexivity requirement of the relation ($s \sim s$). This also shows that every equivalence class is non-empty. We now show that for any two equivalence classes $[a]_{\sim}$ and $[b]_{\sim}$ are either disjoint or equal.
 
-Suppose the two sets are not disjoint. Then there exists an element $z \in [a]_{\sim} \cap [b]_{\sim}$. Let $n \in [a]_{\sim}$ be arbitary. Since we have $n \sim z$ and $z \sim b$, we must have that $n \in [b]_{\sim}$ by transitivity and so $[a]_{\sim} \subseteq [b]_{\sim}$. Similarly, for an arbitrary element $m \in [b]_{\sim}$ we have $m \sim z$ and $z \sim a$ and so $m \in [a]_{\sim}$ implying that $[b]_{\sim} \subseteq [a]_{\sim}$. Combining these two results means that $[a]_{\sim} = [b]_{\sim}$ and the two equivalence classses are equal.
+Suppose the two sets are not disjoint. Then there exists an element $z \in [a]_{\sim} \cap [b]_{\sim}$. Let $n \in [a]_{\sim}$ be arbitrary. Since we have $n \sim z$ and $z \sim b$, we must have that $n \in [b]_{\sim}$ by transitivity and so $[a]_{\sim} \subseteq [b]_{\sim}$. Similarly, for an arbitrary element $m \in [b]_{\sim}$ we have $m \sim z$ and $z \sim a$ and so $m \in [a]_{\sim}$ implying that $[b]_{\sim} \subseteq [a]_{\sim}$. Combining these two results means that $[a]_{\sim} = [b]_{\sim}$ and the two equivalence classes are equal.
 
 Totalling the results thus far, we see that all elements of $S$ are in a equivalence class, and that these equivalence classes are either disjoint or equal, and so $\mathscr{P}_{\sim}$ indeed forms a partition of $S$.
 
@@ -58,13 +58,13 @@ Totalling the results thus far, we see that all elements of $S$ are in a equival
 
 \bigskip
 
-\textbf{Exercise 1.3.} Given a partition $\mathscr{P}$ on a set $S$, sho w how to define a relation $\sim$ on $S$ such that $\mathscr{P}$ is the corresponding partition.
+\textbf{Exercise 1.3.} Given a partition $\mathscr{P}$ on a set $S$, show how to define a relation $\sim$ on $S$ such that $\mathscr{P}$ is the corresponding partition.
 
 \medskip
 
-\textbf{Solution} Let $P_i$ denote the disjoint non empty subsets in $\mathscr{P}$. We define an equivalence relation on elements of $S$ by the following: $a \sim b$ if and only if $a$ and $b$ are contained within the same subset $P_i$. We need only show this defines a valid equivalance relation.
+\textbf{Solution} Let $P_i$ denote the disjoint non empty subsets in $\mathscr{P}$. We define an equivalence relation on elements of $S$ by the following: $a \sim b$ if and only if $a$ and $b$ are contained within the same subset $P_i$. We need only show this defines a valid equivalence relation.
 
-We clearly have that $a \sim a$ vacuously by the definition of the equivalence relation, so the reflexitivity requirement is satisfied. Supposing that $a \sim b$, this means that $a,b \in P_i$ and so equivalently we have that $b \sim a$, satisfying symmetry. Suppose on top of this we have that $b \sim c$. Then this must mean that $c$ is also the in same subset $P_i$, thereby meaning that $a \sim c$, satisfying transitivity, making this a well defined equivalence relation. By construction this relation generates the exact same partition of $S$ that $\mathscr{P}$ does.
+We clearly have that $a \sim a$ vacuously by the definition of the equivalence relation, so the reflexivity requirement is satisfied. Supposing that $a \sim b$, this means that $a,b \in P_i$ and so equivalently we have that $b \sim a$, satisfying symmetry. Suppose on top of this we have that $b \sim c$. Then this must mean that $c$ is also the in same subset $P_i$, thereby meaning that $a \sim c$, satisfying transitivity, making this a well defined equivalence relation. By construction this relation generates the exact same partition of $S$ that $\mathscr{P}$ does.
 
 \qed 
 
@@ -74,7 +74,7 @@ We clearly have that $a \sim a$ vacuously by the definition of the equivalence r
 
 \medskip
 
-\textbf{Solution} Combining the results of the two previous exercises we know that an equivalence relation defines a partition, $\mathscr{P}_{\sim}$ of a set $S$ by equivalence classes, and that given any partition $\mathscr{P}$ of $S$, we can define a correspondoning equivalence relation that defines this partition. What this means is that this question is as simple as counting all partitions of the set. We have the followings partitions of $\{1,2,3\}$:
+\textbf{Solution} Combining the results of the two previous exercises we know that an equivalence relation defines a partition, $\mathscr{P}_{\sim}$ of a set $S$ by equivalence classes, and that given any partition $\mathscr{P}$ of $S$, we can define a corresponding equivalence relation that defines this partition. What this means is that this question is as simple as counting all partitions of the set. We have the followings partitions of $\{1,2,3\}$:
 
 \[ \{ \{1,2,3\} \}, \{ \{1,2 \}, \{3 \} \}, \{ \{1 \}, \{2,3 \} \}, \{ \{1,3 \}, \{2 \} \}, \{ \{1 \}, \{2 \}, \{3 \} \} \]
 
@@ -102,10 +102,10 @@ If we define this as equivalence classes, we get that the relation is reflexive 
 
 \medskip
 
-\textbf{Solution} For any $a \in \mathbb{R}$ we have that $a-a=0 \in \mathbb{Z}$ so $a \sim a$, satisfying reflexivity. If $a \sim b$ then $a-b \in \mathbb{Z}$ which implies that $-(a-b) = b-a \in Z$ and so $b \sim a$, satisfying symmetry. If $a \sim b$ and $b \sim c$ then we have that $a-b$ and $b-c$ are both integers. We must then have that $(a-b) + (b-c)$ is also an integer, and this is exactly equal to $a-c$, and so we then have that $a \sim c$, satisfying transitivity and thereby proving this is a valid equivalence relation. The second equivalence relation given in the exercise is exactly the same, just working element wise on each ordered pair, with the workings being analagous to those done already.
+\textbf{Solution} For any $a \in \mathbb{R}$ we have that $a-a=0 \in \mathbb{Z}$ so $a \sim a$, satisfying reflexivity. If $a \sim b$ then $a-b \in \mathbb{Z}$ which implies that $-(a-b) = b-a \in Z$ and so $b \sim a$, satisfying symmetry. If $a \sim b$ and $b \sim c$ then we have that $a-b$ and $b-c$ are both integers. We must then have that $(a-b) + (b-c)$ is also an integer, and this is exactly equal to $a-c$, and so we then have that $a \sim c$, satisfying transitivity and thereby proving this is a valid equivalence relation. The second equivalence relation given in the exercise is exactly the same, just working element wise on each ordered pair, with the workings being analogous to those done already.
 \smallskip
 
-In terms of a description, we can think of the first equivalance relation as the real number line being quotiented down to just the interval $[0,1]$. Similarly, for the second relation this is a quotient of the cartesian plane where it is quotiented down to the unit square $[0,1]^2$. If one is familiar with topology, they may know that this set endowed with the quotient topology coming from the standard topology on $\mathbb{R}^2$ gives the 2-torus $\mathbb{T}^2$.
+In terms of a description, we can think of the first equivalence relation as the real number line being quotiented down to just the interval $[0,1]$. Similarly, for the second relation this is a quotient of the cartesian plane where it is quotiented down to the unit square $[0,1]^2$. If one is familiar with topology, they may know that this set endowed with the quotient topology coming from the standard topology on $\mathbb{R}^2$ gives the 2-torus $\mathbb{T}^2$.
 
 \bigskip
 
@@ -119,13 +119,135 @@ In terms of a description, we can think of the first equivalance relation as the
 
 \[ n \times (n-1) \times (n-2) \times \dots 2 \times 1 = n! \]
 
-We know by construction these are indeed injective and surjective, and we will cover every single possible combination of pairs this way, confirming this is indeed the total number of bijections.
+We know by construction these are indeed injective and surjective, and we will cover every single possible combination of element-wise pairings this way, confirming this is indeed the total number of bijections.
 
 \qed
 
 \bigskip
 
+\textbf{Exercise 2.2.} Prove statement (2) in Proposition 2.1. You may assume that given a family of disjoint nonempty subsets of a set, there is a way to choose one element in each member of the family.
+
+\medskip
+
+\textbf{Solution} The claim we must prove is the following: \textit{$f$ has a right-inverse if and only if it is surjective}.
+
+$(\implies)$ Suppose $f: A \to B$ has a right-inverse $g:B \to A$ so that
+
+\[ f \circ g = \textrm{id} _B \]
+
+Let $b \in B$ be any arbitrary elements. We then have that $(f \circ g)(b) = \textrm{id}_B (b) = b$. This then means that $f(g(b))=b$ and so we have found a suitable element $g(b) \in A$ that $f$ maps to $b$, implying that $f$ is surjective.
+
+$(\impliedby)$ Conversely suppose that $f$ is surjective. For every $b \in B$ we consider the fiber of $f$ over $b$, $f^{-1}(b)$. Since $f$ is not necessarily injective, each fiber can have any number of elements. However, by the definition of a function, we know that each fiber is disjoint, and by the axiom of choice we can choose an $a \in f^{-1}(b)$ from each fiber. We then define a function $g:B \to A$ by setting $g(b)=a$. We then have that
+\[ (f \circ g)(b) = f(g(b)) = f(a) = b \]
+
+Implying that $f \circ g = \text{id}_B$ and so $f$ has a right inverse.
+
+\qed
+
+\bigskip
+
+\textbf{Exercise 2.3.} Prove that the inverse of a bijection is a bijection and that the composition of two bijections is a bijection.
+
+\medskip
+
+\textbf{Solution} Let $f:A \to B$ be a bijection, and denote its inverse $f^{-1}:B \to A$
+
+\textit{Injective}: Suppose that $f^{-1}(b') = f^{-1}(b'')$. By injectivity of $f$ we must then have that $f(f^{-1}(b')) = f(f^{-1}(b''))$. By the definition of the inverse, which states that the composition of $f$ and its inverse it equal to the identity function, this then implies that $b' = b''$. Therefore, $f^{-1}$ is injective.
+
+\smallskip
+
+\textit{Surjective} Let $a \in A$. we then have that $f(a) \in B$ and $f^{-1}(f(a)) = a$ so $f^{-1}$ is surjective. We have thus proved that the inverse is also a bijection.
+
+\medskip
+
+Let $g:C \to A$ be another bijection. We will show that $f \circ g$ is a bijection.
+
+\textit{Injective}: Let $c',c'' \in C$ and suppose that $(f \circ g)(c') = (f \circ g)(c'')$. We then have that
+\[ f(g(c')) = f(g(c'')) \]
+
+By the injectivity of $f$ we must have that $g(c')=g(c'')$, and then by injectivity of $g$ we must then have that $c' = c''$ showing that $f \circ g$ is injective.
+
+\smallskip
+
+\textit{Surjective}: Let $b \in B$ be an arbitrary element. The surjectivity of $f$ means $\exists a \in A$ so that $f(a) = b$. Then by surjectivity of $g$ $\exists c \in C$ so that $g(c)=a$. We then observe the following
+
+\[ (f \circ g)(c) = f(g(c)) = f(a) = b \]
+
+Showing that $f \circ g$ is also surjective and thus is a bijection.
+
+\qed
+
+\bigskip
+
+\textbf{Exercise 2.4.} Prove that 'isomorphism' is an equivalence relation (on any set of sets).
+
+\smallskip
+
+\textbf{Solution} We show that each requirement of an equivalence relation holds, which comes almost immediately from the previous exercises.
+
+\textit{Reflexive}: For any set $A$ we must have $A \cong A$ as the identity function on $A$, $\text{id}_A:A \to A$ is a bijection from $A$ to $A$ and so $A$ is isomorphic to itself.
+
+\textit{Symmetric}: Suppose that $A \cong B$. This then means there exists a bijection, say $f:A \to B$, between the two sets. Exercise (2.3) proved that the inverse of $f$, $f^{-1}:B \to A$ is also a bijection, and so this then means that $B \cong A$.
+
+\textit{Transitive}: Suppose we have $A \cong B$ and $B \cong C$. This then means we have two bijections $f:A \to B$ and $g:B \to C$. Exercise (2.3) also demonstrated that the composition of bijections is a bijection, and so $g \circ f:A \to C$ is a bijection and we have $A \cong C$.
+
+\qed
+
+\bigskip
+
+\textbf{Exercise 2.5.} Formulate the notion of \textit{epimorphism}, in the style of the notion of \textit{monomorphism} seen in \S 2.6, and prove a results analogous to Proposition 2.3, for epimorphisms and surjection.
+
+\medskip
+
+\textbf{Solution} An epimorphism can be defined as follows: A function $f:A \to B$ is an \textit{epimorphism} if the following holds:
+
+\begin{center}
+\textit{for all sets $Z$ and all functions $\alpha ',\alpha '': B \to Z$}
+
+\[ \alpha ' \circ f = \alpha '' \circ f \implies \alpha ' = \alpha '' \]
+\end{center}
+
+The analogous proposition we wish to prove is that \textit{A function is surjective if and only if it is an epimorphism}
+
+($\implies$) Suppose $f:A \to B$ is surjective. Then $f$ has a right inverse. For any functions $\alpha ',\alpha '': B \to Z$ we have
+
+\[ \alpha ' \circ f = \alpha '' \circ f \implies \alpha ' \circ f \circ g = \alpha '' \circ f \circ g \implies \alpha ' \circ \text{id}_A = \alpha '' \circ \text{id}_A \implies \alpha ' = \alpha '' \]
+
+so $f$ is an epimorphism.
+
+($\impliedby$) Converse suppose that $f$ is an epimorphism. Then define $\alpha ', \alpha '': B \to \{0,1\}$ by the following:
+
+\[ \alpha '(b) = \begin{cases}
+1 & b \in \text{im} f \\ 0 & b \notin \text{im} f
+\end{cases}, \alpha '' (b) = 1 \]
 
 
+Then clearly we have that $\alpha ' \circ f = \alpha '' \circ f$, and by the definition of $f$ being an epimorphism we must have $\alpha ' = \alpha ''$. This can only be true if $B = \text{im} f$ which means that $f$ must be surjective.
+
+\qed
+
+\bigskip
+
+\textbf{Exercise 2.6.} With notation as in Example 2.4, explain how any function $f:A \to B$ determine a section of $\pi_A$.
+
+\medskip
+
+\textbf{Solution} Recall that a section is just a right inverse, so we want to find a function $g:A \to A \times B$ such that
+
+\[ \pi_A \circ g = \text{id}_{A} \]
+
+Since $\pi_A((a,b)) = a$, we want to construct $g$ such that $g(a) = (a,b)$ where b is any arbitrary element of $B$ that is not important to us. However, since we want our section to be defined by $f$ we can set $g(a)=(a,f(a))$. This means g is determined by $f$, and by construction we have that $g$ is a section of $\pi_A$.
+
+\qed
+
+\bigskip
+
+\textbf{Exercise 2.7.} Let $f:A \to B$ be any function. Prove that the graph $\Gamma_f$ of $f$ is isomorphic to $A$.
+
+\medskip
+
+\textbf{Solution} Whenever encountering a question like this, I think its more fruitful to design a function going from the smaller set, $A$, to the bigger set $\Gamma_f$. This is largely due to the fact that when going the other way, you are losing some information, and in cases like this it can be hard to make the function injective. We will construct our function as follows:
+
+\[ g:A \to \Gamma_f, a \mapsto (a,f(a)) \]
 
 \end{document}
