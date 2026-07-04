@@ -6,6 +6,18 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{tikz-cd}
+
+\newcommand{\Exercise}[1]{\textbf{Exercise #1}}
+\newcommand{\Solution}{\textbf{Solution }}
+\newcommand{\cat}[1]{\mathsf{#1}}
+\newcommand{\Cat}{\cat{C}}
+\newcommand{\id}{\text{id}}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Obj}{Obj}
+
+
+
 \title{Algebra: Chapter 0 Solutions}
 \author{Dylan Huis in't Veld}
 \begin{document}
@@ -16,8 +28,11 @@
 
 \section*{Preface}
 
-This document does not seek to represent the perfect solutions manual to the text at hand, and is more of a way of recording my progress through the text. Should you happen to find this, and wish to contribute or point out any logical flaws in the arguments presented, I would be more than happy to adjust my solutions to perhaps work towards establishing this as a suggested solutions. Should this end up being the case, I will update this section accordingly
+This document does not seek to represent the perfect solutions manual to the text at hand, and is more of a way of recording my progress through the text. Should you happen to find this, and wish to contribute or point out any logical flaws in the arguments presented, I would be more than happy to adjust my solutions.
 
+My main goal of writing this is to improve my \LaTeX fluency, having previously gotten used to Typst. However, having grown interested in algebra after taking courses in group theory and topology (which included elements of algebraic topology) at university, I wanted to take a more in depth route through the subject while also exploring further structures beyond group theory. I apologise if my solutions to the group theory questions are not as thorough, as this will come subconsciously as a result of likely having done the exercises, or those similar to, before.
+
+My progress through this will likely decrease once the semester starts back up, as I have started this endeavour during my winter break. I apologise if you are waiting for solutions for a while. I will do my best to work on this when I can.
 \newpage
 
 \section{Chapter 1: Preliminaries: Set Theory and Categories}
@@ -318,7 +333,7 @@ When we constructed $A \amalg B$, we found two sets $A'$ and $B'$ which were iso
 
 \bigskip
 
-\textbf{Exercise 2.11.} In view of Exercise 2.10, it is not unreasonable to use $2^A$ to denote th set of functions from an arbitrary set $A$ to a set with 2 elements (say {0,1}). Prove that there is a bijection between $2^A$ and the \textit{power set} of A.
+\textbf{Exercise 2.11.} In view of Exercise 2.10, it is not unreasonable to use $2^A$ to denote the set of functions from an arbitrary set $A$ to a set with 2 elements (say {0,1}). Prove that there is a bijection between $2^A$ and the \textit{power set} of A.
 
 
 \textbf{Solution} Encountering your first question of this nature can be somewhat daunting. I think it helps to take a step back and simplify what we are wanting to show. We want to match any subset of $A$ to a function $f:A \to \{0,1\}$ such that we guarantee there is no overlap, and every function is covered. Since we only have two choices of where to send elements of $A$, I think its intuitive that for a given subset of $A$ we will send all elements of that subset to 1, and every other element of $A$ to 0. Writing this out mathematically we define a function $\phi: \mathscr{P}(A) \to 2^A$ by the following. Let $N \in \mathscr{P}(A)$ be arbitrary. We then have that $\phi(N) = f_N$ where
@@ -333,6 +348,193 @@ We now show that $\phi$ is a bijection
 \textit{Injective}: Suppose that $\phi(M)=\phi(N)$. We must then have that $f_N$ and $f_M$ are equal as functions. This is only possible if they send the exact same elements to 1 and the same elements to 0, but by construction this is only possible if $M=N$, proving injectivity.
 
 \textit{Surjective}: Let $f:A \to \{0,1\}$ be any function. We have that $f^{-1}(1) \subseteq A$ and so $f^{-1}(1) \in \mathscr{P}(A)$. We then immediately get that $\phi(f^{-1}(1)) = f$, proving surjectivity.
+
+\qed
+
+\bigskip
+
+\subsection{Categories}
+
+\medskip
+
+\textbf{Exercise 3.1.} Let $\mathsf{C}$ be a category. Consider a structure $\mathsf{C}^{op}$ with \begin{itemize}
+    \item $\text{Obj}(\mathsf{C}^{op}) := \text{Obj}(\mathsf{C})$
+    \item for $A,B$ objects of $\mathsf{C}^{op}$, $\text{Hom}_{\mathsf{C}^{op}}(A,B) := \text{Hom}_{\mathsf{C}}(B,A)$
+\end{itemize}
+Show how to make this into a category (that is, define composition of morphisms in $\mathsf{C}^{op}$ and verify the properties listed in \S 3.1 )
+
+\medskip
+
+\textbf{Solution} Let A,B be objects in $\mathsf{C}^{op}$ and $f \in \text{Hom}_{\mathsf{C}^{op}}(A,B)$ be a morphism. Then $f \in \text{Hom}_{\mathsf{C}}(B,A)$. Similarly let $g \in \text{Hom}_{\mathsf{C}^{op}}(B,C)$, so $g \in \text{Hom}_{\mathsf{C}}(C,B)$. We define $gf \in \text{Hom}_{\mathsf{C}^{op}}(A,C)$ as the composition $fg \in \text{Hom}_{\mathsf{C}}(C,A)$. We no verify each property of a category holds.
+
+The identity morphism $1_A \in \Hom_{\Cat^{op}}(A,A)$ is inherited from the original category by definition. Let $f \in \Hom_{\Cat^{op}}(A,B)$, $g \in \Hom_{\Cat^{op}}(B,C)$, $h \in \Hom_{\Cat^{op}}(C,D)$. For clarity we denote $\overline{fg}$ for a composition in the original category. We have the following:
+
+\[ (gf)h = (\overline{fg})h = \overline{h}(\overline{fg}) = (\overline{hf})\overline{g} = g(fh) \]
+
+And so composition is associative. The requirement for $\Hom_{\Cat^{op}}(A,B)$ and $\Hom_{\Cat^{op}}(C,D)$ being disjoint unless $A=C$ and $B=D$ is also inherited from $\Cat$ and so we have verified that $\Cat^{op}$ is a valid category.
+
+\qed
+
+\bigskip
+
+\Exercise{3.2.} If $A$ is a finite set, how large is $\End_{\cat{Set}}(A)$?
+
+\Solution We know that $\End_{\cat{Set}}(A) = \Hom(A,A) = A^A$. From Exercise (2.10) we know that $|A^A| = |A|^{|A|}$.
+
+\qed
+
+\bigskip
+
+\Exercise{3.3.} Formulate precisely what it means to say that $1_a$ is an identity with respect to composition in Example 3.3, and prove this assertion.
+
+\Solution Saying that $1_a \in \Hom(a,a)$ is the identity with respect to composition, means that for $f \in \Hom(a,b)$ we have
+
+\[  f 1_b = (a,b), 1_a f = (a,b)  \]
+
+We now prove this claim. If $f \in \Hom(a,b)$ then this implies that $a \sim b$. $1_a = (a,a)$ implies $a \sim a$ and similarly $1_b$ implies $b \sim b$, which we now to be true as the relation is defined to by reflexive. By the transitivity of the relation we have that
+
+\[ a \sim b, b \sim b \implies a \sim b \]
+
+\[ a \sim a, a \sim b \implies a \sim b \]
+
+And this is exactly equivalent to the statement above.
+
+\qed
+
+\bigskip
+
+\Exercise{3.4.} Can we define a category in the style of Example 3.3 using the relation $<$ on the set $\mathbb{Z}$?
+
+\Solution Example 3.3 uses a relation that is both reflexive and transitive to construct a category. The relation $<$ is not reflexive, aas an integer cannot be strictly greater/lesser than itself, and so we cannot use Example 3.3 to define a category. In general, we are not going to have an identity morphism in this case, as for $a \in \mathbb{Z}$ the set $\Hom(a,a)$ will be empty for the reason above.
+
+\qed
+
+\Exercise{3.5.} Explain in what sense Example 3.4 is an instance of the categories considered in Example 3.3.
+
+\Solution The power set $\mathscr{P}(S)$ of a set $S$ is itself a set, and $\subseteq$ is a relation that is both reflexive and transitive that defines the morphisms of the category. Its immediately clear that from this that Example 3.4 is a particular case of Example 3.3. 
+
+\qed
+
+\Exercise{3.6.} (Assuming some familiarity with linear algebra.) Define a category $\cat{V}$ by taking $\Obj(\cat{V}) = \mathbb{N}$ and letting $\Hom_V(n,m) = $ the set of $m \times n$ matrices with real entries, for all $m,n \in \mathbb{N}$. (I will leave the read the task of making sense of a matrix with 0 rows or columns.) Use product of matrices to define composition. Does this category 'feel' familiar?
+
+\Solution We simply show that each requirement of the category $\cat{V}$ is satisfied. For every $n \in \mathbb{N}$ we can define our identity morphism as the $n-$th dimensional identity matrix ($I_n$). We clearly have that $I_n \in \Hom(n,n)$. Let $M \in \Hom(n,m), N \in \Hom(m,u), P \in \Hom(u,v)$. The the composition of these morphisms, $PNM$, is just the product of three matrices, and we know that matrix multiplication is associative so composition is associative in $\cat{V}$. We next show that $I_n$ is the identity with respect to composition. For $M \in \Hom(n,m)$ we have that
+
+\[ M I_n = M, I_m M = M \]
+
+And so this requirement is satisfied. Finally we know that $\Hom(n,m) = \Hom(u,v)$ if and only if $n=u$ and $m=v$ as the equality of the sets means the dimensions of the matrices within each set must be the same. We have shown that $\cat{V}$ is a well defined category.
+
+\qed
+
+\Exercise{3.7.} Define carefully the objects and morphisms in Example 3.7, and draw the diagram corresponding to composition.
+
+\medskip
+
+\Solution Defining this category is very similar to how $\Cat_A$ was defined in the example prescribed. We will denote this new category $\Cat^A$. The objects of $\Cat^A$ are all morphisms from the object $A$ of $\Cat$ to any object of $\Cat$. We define this pictorially by using a 'bottom-up' approach opposite to that of Example 3.5
+
+\[
+\begin{tikzcd}
+Z \\ A \arrow[u,"f"] 
+\end{tikzcd}
+\]
+
+Let $f_1,f_2$ be objects of $\Cat^A$
+\[
+\begin{tikzcd}
+    Z_1 & Z_2 \\ A \arrow[u,"f_1"] & A \arrow[u,"f_2"]
+\end{tikzcd}
+\]
+
+Then, morphisms $f_1 \to f_2$ of $\Cat^A$ are defined to be commutative diagrams
+
+\[
+\begin{tikzcd}[column sep=small]
+    Z_1 \arrow[rr,"\gamma"] & & Z_2 \\ & A \arrow[ul,"f_1"] \arrow[ur,"f_2"]
+\end{tikzcd}
+\]
+
+Or equivalently the morphism is exactly the morphism $\gamma: Z_1 \to Z_2$ such that $f_2 = \gamma f_1$. The composition of two morphisms $f_1 \to f_2 \to f_3$ corresponds to joining the two commutative diagrams
+
+\[
+\begin{tikzcd}
+    Z_1 \arrow[r,"\gamma_1"] & Z_2 \arrow[r,"\gamma_2"] & Z_3 \\ & A \arrow[ul,"f_1"] \arrow[u,"f_2"] \arrow[ur,"f_3" below]
+\end{tikzcd}
+\]
+
+The requirements for $\Cat^A$ to be a category are shown exactly the same way as in Example 3.5
+
+\qed
+\bigskip
+
+\Exercise{3.8.} A \textit{subcategory} $\Cat'$ of $\Cat$ consists of a collection of objects in $\Cat$ with sets of morphisms $\Hom_{\Cat'}(A,B) \subseteq \Hom_{\Cat}(A,B)$ for all objects $A,B$ in $\Obj(\Cat')$, such that identities and compositions in $\Cat$ make $C'$ into a category. A subcategory is \textit{full} if  $\Hom_{\Cat'}(A,B) = \Hom_{\Cat}(A,B)$ for all $\Obj(\Cat')$. Construct a category of \textit{infinite sets} and explain how it may be viewed as a full subcategory of $\cat{Set}$.
+
+\medskip
+
+\Solution Let $\cat{Setinf}$ denote the category of infinite sets. Clearly, the objects of $\cat{Setinf}$ are infinite sets, and morphisms from $A$ to $B$ are the set of all functions from $A$ to $B$, $B^A$. It's (hopefully) immediately clear that all of the requirements for this to be a valid category are inherited from $\cat{Set}$, Since $A$ and $B$ are also objects of $\cat{Set}$, and from this angle its clear that $\cat{Setinf}$ is a subcategory of $\cat{Set}$. Furthermore, since $\Hom_{\cat{Setinf}}(A,B) = B^A = Hom_{\cat{Set}}(A,B)$, we can also see that this subcategory is full.
+
+\qed
+
+\bigskip
+
+\Exercise{3.9.} An alternative to the notion of \textit{multiset} introduced in \S 2.2 is obtained by considering sets endowed with equivalence relations; equivalent elements are taken to be multiple instances of elements 'of the same kind'. Define a notion of morphism between such enhanced sets, obtaining a category $\cat{MSet}$ containing (a 'copy' of) $\cat{Set}$ as a full subcategory. Which objects in $\cat{Mset}$ determine ordinary multisets as defined in \S 2.2 and how? Spell out what a morphism of multisets would be from this point of view. (There are several natural notions of morphisms of multisets. Try to define morphisms in $\cat{MSet}$ so that the notion you obtain for ordinary multisets captures your intuitive understanding of these objects.) 
+
+\Solution As mentioned by the question we will let $\Obj(\cat{MSet})$ be Sets endowed with an equivalence relation between its elements. We will define a morphism to be a function between equivalence classes between the two enhanced sets. We show that this is a well defined category. It may help first to make what we have said more explicit
+
+\smallskip
+
+Our objects will be 2-tuples $(A,\sim)$ where A is a set, and $\sim$ is an equivalence relation endowed on the set. For, objects $(A,\sim_A)$, $(B,\sim_B)$ we will define a morphism to be a function $f:(A,\sim_A) \to (B,\sim_B)$ such that if $x \sim_A y$ for $x,y \in A$, then $f(x) \sim_B f(y)$. Clearly there is an identity morphism $I:(A,\sim_A) \to (A,\sim_A)$ which is just the identity function mapping $x \mapsto x$. For composition of morphisms, we use usual function composition. For $f \in \Hom(A,B)$ and $g \in \Hom(B,C)$, if $x \sim_A y$ for $x,y \in A$, then $f(x) \sim_B f(y)$. We then must also have that $g(f(x)) \sim_C g(f(y))$ and so $gf \in \Hom(A,C)$. Associativity comes immediately from the fact that these are functions. It is clear that for the object $(S,=)$ that this is just a normal set, and so for another set of the same nature, say $(M,=)$ we have that the morphisms between the two objects are just regular set-functions exactly as described in the category $\cat{Set}$. Therefore, it should hopefully be clear that $\cat{Set}$ is a full subcategory of $\cat{MSet}$.
+
+\qed
+
+\bigskip
+
+\Exercise{3.10.} Since the objects of a category $\Cat$ are not (necessarily interpreted as) set, it is not clear how to make sense of a notion of 'subobject' in general. In some situations it \textit{does} make sense to talk about subobjects, and the subobjects of any given object $A$ in $\Cat$ are in one-to-one correspondence with the morphisms $A \to \Omega$ for a fixed, special object $\Omega$ of $\Cat$, called a \textit{subobject classifier}. Show that $\cat{Set}$ has a subobject classifier.
+
+\Solution The subobjects of $A$ in this case will be subsets. We know that all of the subsets of $A$ are captured by its power set $\mathscr{P}(A)$. Therefore we need only find a one to one correspondence between the power set and the morphisms to a fixed set. One may recall this is exactly what we did with $2^A$. That is, we considered functions $f:A \to \{0,1\}$ and found a one to one correspondence between these and the power set of $A$. This is exactly what we are required to show, and so Exercise (2.11) directly shows that $\{0,1\}$ is the subobject classifier of $\cat{Set}$.
+
+\qed
+
+\bigskip
+
+\Exercise{3.11.} Draw the relevant diagrams and define composition and identities for the category $\Cat^{A,B}$ mentioned in Example 3.9. Do the same for the category $\Cat^{\alpha,\beta}$ mentioned in Example 3.10.
+
+\Solution For $\Cat^{A,B}$ we have that $\Obj(\Cat^{A,B})$ are the diagrams
+
+\[
+\begin{tikzcd}[column sep=small]
+    & & A \arrow[lld,"f" above] \\ Z \\ & & B \arrow[llu, "g"]
+\end{tikzcd}\]
+
+Or equivalently pairs of morphisms in $\Cat$, $(f,g)$ where $f:A \to Z$, $g:B \to Z$. The morphisms $(f_1,g_1) \to (f_2,g_2)$ are commutative diagrams
+
+\[
+\begin{tikzcd}
+    & & A \arrow[lld, "f_1" above, bend right=20] \arrow[ld,"f_2"] \\ Z_1 \arrow[r, "\sigma"] & Z_2 & \\ & & B \arrow[llu,"g_1", bend left=20] \arrow[lu, "g_2"]
+\end{tikzcd}\]
+
+Or equivalently the morphism $\sigma:Z_1 \to Z_2$ such that $f_2=\sigma f_1$ AND $g_2 =\sigma g_1$. The identity morphism will just be the identity function $\text{id}:Z \to Z$ in the following diagram:
+
+\[
+\begin{tikzcd}
+    & & A \arrow[lld, "f" above, bend right=20] \arrow[ld,"f"] \\ Z_1 \arrow[r, "\text{id}"] & Z_2 & \\ & & B \arrow[llu,"g", bend left=20] \arrow[lu, "g"]
+\end{tikzcd}\]
+
+as $f = f \id$ and $g = g \id$. For composition, this is just joining two diagrams together and this process is independent of the order join the diagrams together, so it is associative.
+
+The process for $\Cat^{\alpha,\beta}$ is very similar. $\Obj(\Cat^{\alpha,\beta})$ are the commutative diagrams
+
+\[
+\begin{tikzcd}
+    & A \arrow[ld, "f"] & \\ Z & & C \arrow[lu, "\alpha"] \arrow[ld,"\beta"] \\ & B \arrow[lu, "g"] &
+\end{tikzcd}\]
+
+
+or equivalently paris of morphisms $(f,g)$ Such that $f\alpha=g\beta$. Then, morphisms correspond to the commutative diagram
+\[
+\begin{tikzcd}
+    & & A \arrow[lld, "f_1" above, bend right=20] \arrow[ld,"f_2"] & \\ Z_1 \arrow[r, "\sigma"] & Z_2 & & C \arrow[lu,"\alpha"] \arrow[ld,"\beta"] \\ & & B \arrow[llu,"g_1", bend left=20] \arrow[lu, "g_2"] &
+\end{tikzcd}\]
+
+With the identity being the same as the previous category, and associativity having an analogous argument.
 
 \qed
 
