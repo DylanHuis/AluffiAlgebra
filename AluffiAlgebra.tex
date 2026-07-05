@@ -528,13 +528,115 @@ The process for $\Cat^{\alpha,\beta}$ is very similar. $\Obj(\Cat^{\alpha,\beta}
 \end{tikzcd}\]
 
 
-or equivalently paris of morphisms $(f,g)$ Such that $f\alpha=g\beta$. Then, morphisms correspond to the commutative diagram
+or equivalently pairs of morphisms $(f,g)$ Such that $f\alpha=g\beta$. Then, morphisms correspond to the commutative diagram
 \[
 \begin{tikzcd}
     & & A \arrow[lld, "f_1" above, bend right=20] \arrow[ld,"f_2"] & \\ Z_1 \arrow[r, "\sigma"] & Z_2 & & C \arrow[lu,"\alpha"] \arrow[ld,"\beta"] \\ & & B \arrow[llu,"g_1", bend left=20] \arrow[lu, "g_2"] &
 \end{tikzcd}\]
 
 With the identity being the same as the previous category, and associativity having an analogous argument.
+
+\qed
+
+\bigskip
+
+\subsection{Morphisms}
+
+\bigskip
+
+\Exercise{4.1.} Composition is defined for  \textit{two} morphisms. If more than two morphisms are given, e.g.,
+
+\[
+\begin{tikzcd}
+    A \arrow[r,"f"] & B \arrow[r,"g"] & C \arrow[r,"h"] & D \arrow[r,"i"] & E
+\end{tikzcd}\]
+
+then one may compose them is several ways, for example:
+
+\[ (ih)(gf), \ (i(hg))f, \ i((hg)f), \ \text{etc.} \]
+
+so that every step one is only composing two morphisms. Prove that the result of any such nested composition is independent of the placement of the parentheses.
+
+\medskip
+
+\Solution As suggested by the hint we use induction on the number of morphisms. We start on the first non trivial case of $n=3$. This case holds purely from the associativity of composition. That is,
+
+\[ f_3 f_2 f_1 = (f_3 f_2) f_1 = f_3 (f_2 f_1)\]
+
+We also have that $n=2$ holds vacuously, so we will use strong induction. We suppose that the result holds for any $i \leq n$ and consider the composition $f_{n+1} f_n f_{n-1} \dotsi f_1$. Since composition is only defined for two morphisms we need only consider two cases; whether $f_{1}$ is composed with only $f_2$ or its composed with Some choice of composition for $(f_{n+1} f_{n} \dotsi f_2)$. In the first case we have that our choice of composition will look like
+
+\[ (f_{n+1} f_n \dotsi f_3)(f_2 f_1)\]
+
+By associativity this is equal to 
+
+\[ ((f_{n+1} f_n \dotsi f_3) f_2)(f_1)\]
+
+So this reduces to the second case. We know from the inductive hypothesis that any choice any of composition this will be equal to
+
+\[ (( \, \dotsi ((f_{n+1}f_n)f_{n-2})\,\dotsi)f_1)\]
+
+Which proves the result.
+
+\qed
+
+\bigskip
+
+\Exercise{4.2.} In Example 3.3 we have seen how to construct a category from a set endowed with a relation, provided this latter is reflexive and transitive. For what types of relations is the corresponding category a groupoid?
+
+\medskip
+
+\Solution Recall that a groupoid is a category in which every morphism is an isomorphism. If we add the requirement to the relation that it must by symmetric, making it an equivalence relation, then this will satisfy the criteria we need. To prove this, we need to to show that any $(a,b) \in Hom(a.b)$ is an isomorphism. the existence of this this morphism means that $a \sim b$, and since the relation is symmetric we have that $b \sim a$. Therefore, this means that $(b,a) \in \Hom(a,b)$. We then observe the following:
+
+\[ (a,b)(b,a) = (a,a) = 1_a, \ \ (b,a)(a,b) = 1_b \]
+
+Which is true as the relation satisfies transitivity. We have thus shown that $(a,b)$ has a two sided morphism, making it an isomorphism. Our choice of morphism was arbitrary, and so every morphism is an isomorphism and we have that the category is a groupoid.
+
+\qed
+
+\bigskip
+
+
+\Exercise{4.3.} Let $A,B$ be objects of a category $\Cat$, and let $f \in \Hom_{\Cat}(A,B)$ be a morphism.
+\begin{itemize}
+    \item Prove that if $f$ has a right-inverse, then $f$ is an epimorphism
+    \item Show that the converse does not hold, by giving an explicit example of a category and an epimorphism
+\end{itemize}
+
+\medskip
+
+\Solution Let $f \in \Hom_{\Cat}(A,B)$, and $\beta',\beta'' \in \Hom(B,Z)$ for some object $Z$ in $\Cat$. Suppose $f$ has a right inverse $g \in \Hom(B,A)$. We then have that
+
+\[\beta' \circ f = \beta'' \circ f \implies \beta' \circ fg = \beta'' \circ fg \implies \beta' \circ 1_B = \beta'' \circ 1_B \implies \beta' = \beta''\]
+
+so $f$ is an epimorphism. We note that the converse is not true by considering the category corresponding to endowing $\mathbb{Z}$ with the equivalence relation $\leq$. Consider the morphism $f = (1,2)$ which exists since $1 \leq 2$. If we have morphisms $g = (2,b')$,$ h= (2,b'')$ such that $gf = hf$ then this implies that $b'=b''$ and so the two morphisms are equal. This demonstrates that $f$ is an epimorphism. However, there is no right inverse to $f$ is this would imply that $2 \leq 1$ which we know is not true, and therefore the converse does not hold.
+
+\qed
+
+\bigskip
+
+\Exercise{4.4.} Prove that the composition of two monomorphisms is a monomorphism. Deduce that one can define a subcategory $\Cat_{mono}$ of a category $\Cat$ by taking the same objects as in $\Cat$ and defining $\Hom_{\Cat_{mono}}(A,B)$ to be the subset of $\Hom_{\Cat}(A,B)$ consisting of monomorphisms, for all objects $A,B$. Do the same for epimorphisms. Can you define a subcategory $\Cat_{nonmono}$ of $\Cat$ by restricting to morphisms that are \textit{not} monomorphisms?
+
+\medskip
+
+\Solution Let $f \in \Hom(A,B)$ and $g \in \Hom(B,C)$ be monomorphisms. Let $\alpha',\alpha'' \in \Hom(Z,A)$ for some object $Z$ in $\Cat$. we then have that
+\[ gf \circ \alpha' = gf \circ \alpha'' \implies g(f \circ \alpha') = g(f \circ \alpha'') \implies f \circ \alpha' = f \circ \alpha'' \implies \alpha' = \alpha''\]
+
+so $gf$ is a monomorphism. This means that composition is well defined in $\Cat_{mono}$. Associativity is inherited from the original category, and since the identity is an isomorphism it is also a monomorphism it is also inherited. This means the subcategory is well defined. We do the same for epimorphisms. Instead, let $f \in \Hom(A,B)$ and $g \in \Hom(B,C)$ be epimorphisms. Let $\beta',\beta'' \in \Hom(B,Z)$. We then have that
+
+\[\beta' \circ gf = \beta'' \circ gf \implies (\beta' \circ g)f = (\beta'' \circ g)f \implies \beta' \circ g = \beta'' \circ g \implies \beta' = \beta'' \]
+
+So $gf$ is an epimorphism. This defines a subcategory by an analogous argument to that for monomorphisms. $\Cat_{nonmono}$ is not a well defined subcategory. This is because if we only inherit morphisms that are not monomorphisms, this will not contain the identity morphisms (which are isomorphisms) and as a result this fails to be a valid subcategory.
+
+\qed
+
+\bigskip
+
+
+\Exercise{4.5.} Give a concrete description of monomorphisms and epimorphisms in the category $\cat{MSet}$ you constructed in Exercise 3.9.
+
+\medskip
+
+\Solution Since the morphisms are defined as normal set functions with the added requirement that they map equivalence class representatives to the same equivalence class in the image, we will have that there a monomorphisms if and only if they are injective as set functions, and epimorphisms if and only if they are surjective as set functions.
 
 \qed
 
